@@ -76,6 +76,14 @@ GEM
       irb (>= 1.5.0)
       reline (>= 0.3.1)
     diff-lcs (1.5.0)
+    elastic-transport (8.2.2)
+      faraday (< 3)
+      multi_json
+    elasticsearch (8.9.0)
+      elastic-transport (~> 8)
+      elasticsearch-api (= 8.9.0)
+    elasticsearch-api (8.9.0)
+      multi_json
     erubi (1.12.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
@@ -84,8 +92,13 @@ GEM
       railties (>= 5.0.0)
     faker (3.2.0)
       i18n (>= 1.8.11, < 2)
+    faraday (2.7.10)
+      faraday-net_http (>= 2.0, < 3.1)
+      ruby2_keywords (>= 0.0.4)
+    faraday-net_http (3.0.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    hashie (5.0.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
@@ -104,6 +117,7 @@ GEM
     mini_mime (1.1.5)
     minitest (5.19.0)
     msgpack (1.7.2)
+    multi_json (1.15.0)
     net-imap (0.3.7)
       date
       net-protocol
@@ -172,6 +186,10 @@ GEM
       rspec-mocks (~> 3.12)
       rspec-support (~> 3.12)
     rspec-support (3.12.1)
+    ruby2_keywords (0.0.5)
+    searchkick (5.3.0)
+      activemodel (>= 6.1)
+      hashie
     sqlite3 (1.6.3-aarch64-linux)
     sqlite3 (1.6.3-arm64-darwin)
     thor (1.2.2)
@@ -190,11 +208,13 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   debug
+  elasticsearch
   factory_bot_rails
   faker
   puma (~> 5.0)
   rails (~> 7.0.7)
   rspec-rails (~> 6.0.0)
+  searchkick
   sqlite3 (~> 1.4)
   tzinfo-data
 
