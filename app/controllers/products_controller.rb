@@ -3,9 +3,8 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
-    @products = Product.all
-
-    render json: @products
+    products = Product.search('*', page: params[:page], per_page: 20).to_a
+    render json: ProductBlueprint.render(products)
   end
 
   # GET /products/1
