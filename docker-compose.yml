@@ -4,10 +4,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch_api:9200
     ports:
       - "3000:3000"
     volumes:
       - .:/app
+    command: bash -c "bundle exec rails db:migrate && bundle exec rails db:seed && bundle exec rails runner 'Product.reindex' && bundle exec rails server -b 0.0.0.0"
   elasticsearch_api:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.15.0
     ports:
