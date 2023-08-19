@@ -7,9 +7,16 @@ class ProductsController < ApplicationController
     render json: ProductBlueprint.render(products)
   end
 
-  # GET /products/1
+  # GET /products/search/:q
   def show
     render json: @product
+  end
+
+  # GET /products/search?=:q
+  def search
+    query = params[:query]
+    results = Product.search(query, fields: [:title])
+    render json: results
   end
 
   # POST /products
