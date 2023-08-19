@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
   # GET /products/search?=:q
   def search
     query = params[:query]
-    results = Product.search(query, fields: [:title])
+    results = Product.search(query, fields: [:title], operator: "or")
     render json: results
   end
 
