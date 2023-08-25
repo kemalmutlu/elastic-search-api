@@ -5,7 +5,10 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      - ELASTICSEARCH_URL=http://elasticsearch_api:9200
+      - ELASTICSEARCH_URL=elasticsearch_api
+      - ELASTICSEARCH_USERNAME=elastic
+      - ELASTICSEARCH_PASSWORD=yourawesomepassword
+      - ELASTICSEARCH_PORT=9200
     ports:
       - "3000:3000"
     volumes:
@@ -18,3 +21,7 @@ services:
       - "9300:9300"
     environment:
       - discovery.type=single-node
+      - ELASTIC_USERNAME=elastic
+      - ELASTIC_PASSWORD=yourawesomepassword
+      - xpack.security.enabled=true
+
